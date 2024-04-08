@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Test</title>
+	<style type="text/css">
+		#slider{
+			width: 65%;
+			height: 256px;
+			border: 2px solid black;
+			margin: 2% 2% 1% 1%;
+			overflow: hidden;
+		}
+		.s{
+			width: 100%;
+			height: 255px;
+			background: orange;
+			border: 1px solid grey;
+			font-size: 32px;
+			line-height: 194px;
+			text-align: center;
+			display: none;
+			animation-name: ss;
+			animation-duration: 3s;
+		}
+
+		@keyframes ss{
+		from{ background: yellow; }
+		to{
+			width: 100%;
+		}
+		}
+
+	</style>
+</head>
+<body>
+
+
+<div id="slider">
+	<div class="s">1</div>
+	<div class="s">2</div>
+	<div class="s">3</div>
+	<div class="s">4</div>
+	<div class="s">5</div>
+	<div class="s">6</div>
+	<div class="s">7</div>
+	
+</div>
+
+<center><h1 id="a"></h1></center>
+</body>
+
+<script type="text/javascript">
+
+	totalslides=document.getElementsByClassName("s").length;
+	var i=0;
+
+	setInterval(
+	function(){
+		
+
+			i++
+			
+			slides=document.getElementsByClassName("s");
+
+			//slides[i].addEventListener('mouseover',function(){
+			//i=i;
+			//});
+			
+			if (i > totalslides) {
+				i=0;
+
+			}
+
+			if (i>=0 && i<=totalslides) {
+				slides[i].style.display="block";
+
+			}
+
+			if (i >0 && i <= totalslides) {
+			slides[i-1].style.display="none";
+
+			}
+
+
+			
+			
+			
+
+			
+			
+		
+	},2000);
+</script>
+</html>

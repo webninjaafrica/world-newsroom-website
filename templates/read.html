@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+{% block title %} 
+	{% for t in news %}
+		{{t['title']}}
+	{% endfor %}
+{% endblock %}
+
+{% block slider %}
+{% for t in news %}
+<div class="categories" style="background: url('{{t['image_url']}}');background-repeat: no-repeat;background-size: 100% 180%;">
+	<div style="width: 100%;height: 100%;background: rgba(20, 110, 90, .80);">
+	<h1>{{t['title']}}</h1>	
+	</div>
+</div>{% endfor %}
+
+{% endblock %}
+
+{% block newslist %}
+<div class="newslist">
+
+	{% for nws in news %}
+	<div class="news-item2">
+		<div class="featured-img">
+			<img src="{{nws['image_url']}}">
+		</div>
+		<div class="excerpt2">
+			<h3>{{nws['title']}}</h3>
+			<p>{{nws['description']}}</p>
+			<br>
+			<span style="background:yellow;font-display: monospace;font-style: italic;font-size: 14px;">Source: {{nws['source_id']}}</span><p>
+			{% for ns in nws['country'] %}
+			<span style="background:lawngreen;font-display: monospace;font-style: italic;font-size: 17px;">#_{{ns}}</span>
+			{% endfor %}
+		</div>
+
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

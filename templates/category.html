@@ -1,0 +1,30 @@
+{% extends("index.html") %}
+{% block title %} {{categoryname}} {% endblock %}
+
+{% block slider %}
+<div class="categories">
+	<h1>{{categoryname}} / News:</h1>
+</div>
+{% endblock %}
+
+{% block newslist %}
+<div class="newslist">
+
+	{% for nws in news %}
+	<div class="news-item">
+		<div class="featured-img">
+			<img src="{{nws['image_url']}}">
+		</div>
+		<div class="excerpt">
+			<h1>{{nws['title']}}</h1>
+			<p>{{nws['description']}} <span style="background:yellow;font-display: monospace;font-style: italic;font-size: 14px;margin:3%;">Source: {{nws['source_id']}}</span> / <span style="color: gray;">{{nws['publish_date']}}</span>
+			<span style="color: gray;">{{nws['country']}}</span> </p>
+			<br>
+
+			<a href="read/{{nws['news_id']}}" class="readmore">Read More..</a><p>
+				<p>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

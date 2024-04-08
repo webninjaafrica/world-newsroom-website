@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}News! {% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+</head>
+<body>
+<div class="menu">
+	<div class="logo" style="background: url('{{url_for('index_page')}}static/logo.PNG'); background-size: 100% 100%;"></div>
+	<ul class="menu-item">
+		<li><a href="{{url_for('index_page')}}"> Home </a></li>
+		{% for menu in categories %}
+			<li><a href="{{url_for('index_page')}}news/{{menu}}"> {{menu}} </a></li>
+		{% endfor %}
+	</ul>
+	<form id="search">
+		<input type="text" name="q" placeholder="Search the world here!"><button>SEARCH</button>
+	</form>
+</div>
+{% block slider %}
+<div class="part">
+	<div id="slider">
+	{% for nws in news %}
+	<div class="s">
+		<div class="photo-placeholder">
+			<img src="{{nws['image_url']}}">
+		</div>
+		<div class="headline">
+			<h2>{{nws['title']}}</h2>
+		</div>
+	</div>
+	{% endfor %}
+
+	
+	
+	
+</div>
+</div>
+{% endblock %}
+
+{% block newslist %}
+<div class="newslist">
+
+	{% for nws in news %}
+	<div class="news-item">
+		<div class="featured-img">
+			<img src="{{nws['image_url']}}">
+		</div>
+		<div class="excerpt">
+			<h1>{{nws['title']}}</h1>
+			<p>{{nws['description']}} <span style="background:yellow;font-display: monospace;font-style: italic;font-size: 14px;margin:3%;">Source: {{nws['source_id']}}</span> / <span style="color: gray;">{{nws['publish_date']}}</span>
+			<span style="color: gray;">{{nws['country']}}</span> </p>
+			<br>
+
+			<a href="read/{{nws['news_id']}}" class="readmore">Read More..</a><p>
+				<p>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}
+</body>
+
+
+<script type="text/javascript">
+
+	totalslides=document.getElementsByClassName("s").length;
+	var i=0;
+
+	setInterval(
+	function(){
+		
+
+			i++
+			
+			slides=document.getElementsByClassName("s");
+
+			//slides[i].addEventListener('mouseover',function(){
+			//i=i;
+			//});
+			
+			if (i > totalslides) {
+				i=0;
+
+			}
+
+			if (i>=0 && i<=totalslides) {
+				slides[i].style.display="block";
+
+			}
+
+			if (i >0 && i <= totalslides) {
+			slides[i-1].style.display="none";
+
+			}
+
+
+			
+			
+			
+
+			
+			
+		
+	},6000);
+</script>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,es',
+      }, 'body');
+      
+     ript>
+</html>
